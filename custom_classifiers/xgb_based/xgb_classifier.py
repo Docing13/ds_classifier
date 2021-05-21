@@ -8,6 +8,9 @@ from custom_classifiers.xgb_based.settings.constants import GRID_PARAMS, \
 
 
 class CustomXGBClassifier(CustomClassifierBase):
+    """
+    Tree based model using XGB
+    """
     def __init__(self):
         self.__model = self.__new_estimator
         self.__estimator = self.__new_estimator

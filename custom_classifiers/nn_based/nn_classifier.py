@@ -1,6 +1,5 @@
 import numpy as np
 from custom_classifiers.base.base import CustomClassifierBase
-from tensorflow.keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Dense, Activation,Dropout
 from custom_classifiers.nn_based.settings.constants import BATCH_SIZE, EPOCHS, \
@@ -8,13 +7,13 @@ from custom_classifiers.nn_based.settings.constants import BATCH_SIZE, EPOCHS, \
 
 
 class CustomNNClassifier(CustomClassifierBase):
-
+    """
+    Neural net simple classification model
+    """
     def __init__(self):
         self.__model = self.__nn_model
 
     def fit(self, x_train, y_train) -> None:
-
-        y_train = to_categorical(y_train)[:,1:]
 
         self.__model.fit(x_train,
                          y_train,
@@ -27,7 +26,7 @@ class CustomNNClassifier(CustomClassifierBase):
         return ans
 
     @property
-    def __nn_model(self):
+    def __nn_model(self) -> Sequential:
         model = Sequential()
 
         model.add(Dense(units=300,
